@@ -28,6 +28,15 @@ from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from libqtile import hook
+import subprocess
+
+# Wallpaper setup
+
+@hook.subscribe.startup_once
+def startup():
+    subprocess.Popen(["swww-daemon"])
+
 
 mod = "mod1" # alt
 # mod = "mod4" # super
@@ -94,8 +103,9 @@ keys = [
     ),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([], "Super_L", lazy.spawn("wofi --show drun"), desc="App launcher (wofi)"),
+    Key([], "Super_L", lazy.spawn("wofi --color ~/.cache/wal/colors --show drun"), desc="App launcher (wofi)"),
 ]
 
 # Add key bindings to switch VTs in Wayland.

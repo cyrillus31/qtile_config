@@ -141,20 +141,7 @@ layout_theme_config = {
         }
 
 layouts = [
-    # layout.Columns(border_focus_stack=["#d75fff", "#8f3dfd"], border_width=7),
     layout.Columns(**layout_theme_config),
-    # layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(**layout_theme_config),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -162,15 +149,16 @@ widget_defaults = dict(
     fontsize=12,
     padding=3,
 )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                # widget.CurrentLayout(),
                 widget.KeyboardLayout(),
                 widget.GroupBox(),
+                widget.CurrentLayout(),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -188,7 +176,8 @@ screens = [
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
-            24,
+            size=30,
+            margin=[5, 5, 5, 5],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),

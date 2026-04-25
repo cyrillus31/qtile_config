@@ -90,7 +90,9 @@ keys = [
     Key([alt, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([], "Super_L", lazy.spawn("wofi --color ~/.cache/wal/colors --show drun"), desc="App launcher (wofi)"),
+    Key([super], "Alt_L", lazy.spawn("wofi --color ~/.cache/wal/colors --show drun"), desc="App launcher (wofi)"),
+
+    Key([super], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Switch keyboard layout")
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -151,13 +153,16 @@ widget_defaults = dict(
 )
 
 extension_defaults = widget_defaults.copy()
-
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.KeyboardLayout(),
-                widget.GroupBox(),
+                widget.KeyboardLayout(
+                    configured_keyboards = ["us", "ru"],
+                    ),
+                widget.GroupBox(
+                    rounded=True,
+                    ),
                 widget.CurrentLayout(),
                 widget.Prompt(),
                 widget.WindowName(),

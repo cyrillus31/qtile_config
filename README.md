@@ -1,5 +1,16 @@
 # Qtile Config Dependencies
 
+## Qtile Extras
+
+### qtile-extras
+- **What:** Additional widgets and functionality for Qtile
+- **Why:** Provides useful widgets like KeyboardLayout, StatusNotifier, etc.
+- **Install (Fedora):**
+  ```bash
+  sudo dnf copr enable frostyx/qtile
+  sudo dnf install qtile-extras
+  ```
+
 ## App Launchers
 
 ### wofi
